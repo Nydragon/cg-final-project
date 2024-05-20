@@ -1,0 +1,13 @@
+prefix = @prefix@
+exec_prefix = @exec_prefix@
+bindir = @bindir@
+
+hello: src/main.c
+	$(CC) -Wall -O3 -o hello src/main.c -lraylib
+
+clean:
+	rm -f hello
+
+install: hello
+	install -d $(bindir)
+	install -t $(bindir) hello
