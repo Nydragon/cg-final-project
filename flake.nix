@@ -24,6 +24,10 @@
             clang-tools
             raylib
           ];
+
+          shellHook = ''
+            unset WAYLAND_DISPLAY;
+          '';
         };
       }
     );
