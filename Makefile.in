@@ -3,7 +3,7 @@ exec_prefix = @exec_prefix@
 bindir = @bindir@
 
 hello: src/main.c
-	$(CC) -Wall -O3 -o hello src/main.c -lraylib
+	$(CC) -Wall -O3 -o hello src/main.c src/camera.h src/camera.c -lraylib
 
 clean:
 	rm -f hello

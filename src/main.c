@@ -25,6 +25,7 @@
  *
  ********************************************************************************************/
 
+#include "camera.h"
 #include "raylib.h"
 
 //------------------------------------------------------------------------------------
@@ -41,6 +42,8 @@ int main(void) {
   SetTargetFPS(60); // Set our game to run at 60 frames-per-second
   //--------------------------------------------------------------------------------------
 
+  Camera camera = create_camera();
+
   // Main game loop
   while (!WindowShouldClose()) // Detect window close button or ESC key
   {
@@ -54,10 +57,11 @@ int main(void) {
     BeginDrawing();
 
     ClearBackground(RAYWHITE);
-
+    BeginMode3D(camera);
     DrawText("Congrats! You created your first window!", 190, 200, 20,
              LIGHTGRAY);
-
+    DrawGrid(10, 1.0f); // Draw a grid
+    EndMode3D();
     EndDrawing();
     //----------------------------------------------------------------------------------
   }

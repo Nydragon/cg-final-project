@@ -12,10 +12,11 @@
       system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
+        lib = nixpkgs.lib;
         name = "demo";
       in
       {
-        packages.${name} = import ./. { inherit pkgs; };
+        packages.${name} = import ./. { inherit pkgs lib; };
 
         defaultPackage = self.packages.${system}.${name};
 
@@ -26,7 +27,7 @@
           ];
 
           shellHook = ''
-            unset WAYLAND_DISPLAY;
+            #unset WAYLAND_DISPLAY;
           '';
         };
       }
