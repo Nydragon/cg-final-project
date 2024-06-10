@@ -1,7 +1,13 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  name ? "graphical-computing-final-project",
+  version ? "0.1.0",
+  ...
+}:
 pkgs.stdenv.mkDerivation {
-  pname = "hello";
-  version = "test";
+  pname = name;
+  version = version;
   nativeBuildInputs = with pkgs; [
     autoreconfHook
     raylib
@@ -9,7 +15,7 @@ pkgs.stdenv.mkDerivation {
   buildInpts = [ ];
 
   postFixup = ''
-    patchelf $out/bin/hello \
+    patchelf $out/bin/${name} \
       --add-needed libwayland-client.so \
       --add-needed libwayland-cursor.so \
       --add-needed libwayland-egl.so \

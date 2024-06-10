@@ -13,10 +13,10 @@
       let
         pkgs = nixpkgs.legacyPackages.${system};
         lib = nixpkgs.lib;
-        name = "demo";
+        name = "graphical-computing-final-project";
       in
       {
-        packages.${name} = import ./. { inherit pkgs lib; };
+        packages.${name} = import ./. { inherit pkgs lib name; };
 
         defaultPackage = self.packages.${system}.${name};
 
@@ -27,7 +27,7 @@
           ];
 
           shellHook = ''
-            #unset WAYLAND_DISPLAY;
+            unset WAYLAND_DISPLAY;
           '';
         };
       }

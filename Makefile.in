@@ -2,12 +2,14 @@ prefix = @prefix@
 exec_prefix = @exec_prefix@
 bindir = @bindir@
 
+BIN_NAME="graphical-computing-final-project"
+
 hello: src/main.c
-	$(CC) -Wall -O3 -o hello src/main.c src/camera.h src/camera.c -lraylib
+	$(CC) -Wall -O3 -o $(BIN_NAME) src/main.c src/camera.h src/camera.c src/cube.h src/cube.c -lraylib
 
 clean:
 	rm -f hello
 
 install: hello
 	install -d $(bindir)
-	install -t $(bindir) hello
+	install -t $(bindir) $(BIN_NAME)
